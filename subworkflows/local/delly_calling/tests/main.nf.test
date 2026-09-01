@@ -8,9 +8,14 @@ nextflow_workflow {
     tag "subworkflows/sv_calling_delly"
     tag "delly"
     tag "delly/call"
+    tag "bcftools"
+    tag "bcftools/index"
+    tag "annotsv"
+    tag "annotsv/annotsv"
 
-    test("sv_calling_delly - bam - raw vcf - stub") {
+    test("sv_calling_delly - bam - raw vcf and annotsv - stub") {
 
+        config "./nextflow.config"
         options "-stub"
 
         when {
@@ -29,6 +34,10 @@ nextflow_workflow {
                     [ id:'genome' ],
                     file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/chr21/sequence/genome.fasta.fai', checkIfExists:true)
                 ])
+                input[3] = Channel.of([[ id:'annotations' ], []])
+                input[4] = Channel.of([[:], []])
+                input[5] = Channel.of([[:], []])
+                input[6] = Channel.of([[:], []])
                 """
             }
         }
@@ -37,7 +46,10 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert workflow.out.vcf },
-                { assert workflow.out.tbi },
+                { assert workflow.out.vcf_index },
+                { assert workflow.out.annotated_tsv },
+                { assert workflow.out.annotated_vcf },
+                { assert workflow.out.unannotated_tsv },
                 { assert workflow.out.versions }
             )
         }
