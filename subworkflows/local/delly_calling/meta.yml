@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: "sv_calling_delly"
+description: Call structural variants with Delly and emit raw VCF files.
+keywords:
+  - structural variants
+  - delly
+  - wgs
+components:
+  - delly/call
+
+input:
+  - ch_bam:
+      description: BAM/CRAM files with indexes
+      structure:
+        - meta:
+            type: map
+            description: |
+              Groovy Map containing sample information
+              e.g. `[ id:'sample1' ]`
+        - bam:
+            type: file
+            description: Aligned BAM/CRAM file
+            pattern: "*.{bam,cram}"
+        - bai:
+            type: file
+            description: BAM/CRAM index file
+            pattern: "*.{bai,crai}"
+  - ch_fasta:
+      description: Reference genome FASTA
+      structure:
+        - meta2:
+            type: map
+            description: Groovy Map containing reference information
+        - fasta:
+            type: file
+            description: Genome reference FASTA file
+            pattern: "*.{fa,fasta}"
+  - ch_fai:
+      description: Reference genome FASTA index
+      structure:
+        - meta3:
+            type: map
+            description: Groovy Map containing reference information
+        - fai:
+            type: file
+            description: Genome reference FASTA index
+            pattern: "*.{fa.fai,fasta.fai}"
+
+output:
+  - vcf:
+      description: Raw Delly SV calls
+      structure:
+        - meta:
+            type: map
+            description: Groovy Map containing sample information
+        - "*.vcf.gz":
+            type: file
+            description: Gzipped VCF with structural variant calls from Delly
+            pattern: "*.vcf.gz"
+  - tbi:
+      description: Raw Delly SV calls index
+      structure:
+        - meta:
+            type: map
+            description: Groovy Map containing sample information
+        - "*.tbi":
+            type: file
+            description: Tabix index for raw Delly SV calls
+            pattern: "*.tbi"
+  - versions:
+      description: Software versions
+      structure:
+        - "versions.yml":
+            type: file
+            description: File containing software versions
+            pattern: "versions.yml"
+
+authors:
+  - "@CrisAriasSarda"
+maintainers:
+  - "@CrisAriasSarda"
