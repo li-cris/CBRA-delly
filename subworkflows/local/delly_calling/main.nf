@@ -39,6 +39,7 @@ workflow SV_CALLING_DELLY {
     ch_versions = ch_versions.mix(ch_delly_versions)
 
 
+    // DELLY_CALL outputs index as .csi, Annotsv expects .tbi
     // bcftools expects: [.{vcf,vcf.gz}]
 
     BCFTOOLS_INDEX (
