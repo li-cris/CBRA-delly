@@ -74,7 +74,7 @@ workflow SV_CALLING_DELLY {
     vcf             = DELLY_CALL.out.bcf            // channel: [ val(meta), path(vcf.gz) ]
     vcf_index       = BCFTOOLS_INDEX.out.index      // channel: [ val(meta), path(tbi) ]
     annotated_tsv   = ANNOTSV_ANNOTSV.out.tsv       // channel: [ val(meta), path(tsv) ]
-    annotated_vcf   = ANNOTSV_ANNOTSV.out.vcf       // channel: [ val(meta), path(vcf) ]
+    annotated_vcf   = ANNOTSV_ANNOTSV.out.vcf       // channel: [ val(meta), path(vcf) ] (optional, requires -vcf 1 in args)
     unannotated_tsv = ANNOTSV_ANNOTSV.out.unannotated_tsv
     versions        = ch_versions                   // channel: [ versions.yml ]
 }
