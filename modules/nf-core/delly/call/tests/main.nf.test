@@ -2,6 +2,7 @@ nextflow_process {
 
     name "Test Process DELLY_CALL"
     script "../main.nf"
+    config "./nextflow.config"
     process "DELLY_CALL"
 
     tag "modules"

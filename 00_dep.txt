@@ -1,0 +1,3 @@
+module load Nextflow/25
+
+nf-test test subworkflows/local/delly_calling/tests/main.nf.test --profile singularity --update-snapshot
