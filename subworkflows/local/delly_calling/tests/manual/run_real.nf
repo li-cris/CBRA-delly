@@ -1,17 +1,15 @@
 nextflow.enable.dsl = 2
 
-include { SV_CALLING_DELLY } from '../main.nf'
+include { SV_CALLING_DELLY } from '../../main.nf'
 
 workflow {
 
     ch_bam = Channel.of([
         [ id:'test' ],
-        // Change to DELLY test/example data
         file(params.delly_exampledata_base_path + 'sr.bam', checkIfExists:true),
         file(params.delly_exampledata_base_path + 'sr.bam.bai', checkIfExists:true)
-   ])
+    ])
 
-    // {.fa, .fasta}
     ch_fasta = Channel.of([
         [ id:'genome' ],
         file(params.delly_exampledata_base_path + 'ref.fa', checkIfExists:true)
