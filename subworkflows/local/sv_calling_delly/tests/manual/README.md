@@ -20,9 +20,9 @@ make PREFIX=. install-human-annotation
 
 ```bash
 ANNOTDIR='../AnnotSV/share/AnnotSV'
-nextflow run subworkflows/local/delly_calling/tests/manual/run_real.nf \
+nextflow run subworkflows/local/sv_calling_delly/tests/manual/run_real.nf \
     -c nextflow.config \
-    -c subworkflows/local/delly_calling/tests/manual/run_real.config \
+    -c subworkflows/local/sv_calling_delly/tests/manual/run_real.config \
     -profile singularity \
     --annotsv_annotations $ANNOTDIR
 ```
