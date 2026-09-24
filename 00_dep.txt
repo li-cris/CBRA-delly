@@ -8,9 +8,9 @@ nf-test test subworkflows/local/delly_calling/tests/main.nf.test --profile singu
 
 
 ANNOTDIR='../AnnotSV/share/AnnotSV'
-nextflow run subworkflows/local/delly_calling/tests/run_real.nf \
+nextflow run subworkflows/local/delly_calling/tests/manual/run_real.nf \
     -c nextflow.config \
-    -c subworkflows/local/delly_calling/tests/run_real.config \
+    -c subworkflows/local/delly_calling/tests/manual/run_real.config \
     -profile singularity \
     --annotsv_annotations $ANNOTDIR
 
