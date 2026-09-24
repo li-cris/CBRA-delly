@@ -123,7 +123,7 @@ The variants are annotated with [Ensembl VEP](https://www.ensembl.org/info/docs/
 
 </details>
 
-Manta and Delly are run when `--svs true --ngs_type wgs`. Delly results are emitted as raw VCF files, indexed with BCFtools, and annotated independently with AnnotSV. Delly and Manta calls are not merged in this workflow.
+For WGS, `--svs true --ngs_type wgs` runs all available SV callers together. Currently this is only Manta and Delly. Delly results are emitted as raw VCF files, indexed with BCFtools, and annotated independently with AnnotSV. Delly and Manta calls are not merged in this workflow.
 
 
 ### CNVs
