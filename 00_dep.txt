@@ -7,15 +7,12 @@ nf-test test subworkflows/local/delly_calling/tests/main.nf.test --profile singu
 
 
 
-
-nextflow run subworkflows/local/delly_calling/
-  tests/run_real.nf \
+ANNOTDIR='../AnnotSV/share/AnnotSV'
+nextflow run subworkflows/local/delly_calling/tests/run_real.nf \
     -c nextflow.config \
     -c subworkflows/local/delly_calling/tests/run_real.config \
     -profile singularity \
-    --annotsv_annotations /path/to/AnnotSV_annotations
-  
-
+    --annotsv_annotations $ANNOTDIR
 
 /home/cristinali/projects/CBRA-delly/tests/config/nf-test.config
   test data for delly is in params.delly_exampledata_base_path
