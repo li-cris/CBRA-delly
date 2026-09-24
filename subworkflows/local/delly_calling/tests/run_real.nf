@@ -6,18 +6,20 @@ workflow {
 
     ch_bam = Channel.of([
         [ id:'test' ],
-        file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test2.paired_end.recalibrated.sorted.bam', checkIfExists:true),
-        file(params.modules_testdata_base_path + 'genomics/homo_sapiens/illumina/bam/test2.paired_end.recalibrated.sorted.bam.bai', checkIfExists:true)
-    ])
+        // Change to DELLY test/example data
+        file(params.delly_exampledata_base_path + 'sr.bam', checkIfExists:true),
+        file(params.delly_exampledata_base_path + 'sr.bam.bai', checkIfExists:true)
+   ])
 
+    // {.fa, .fasta}
     ch_fasta = Channel.of([
         [ id:'genome' ],
-        file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/chr21/sequence/genome.fasta', checkIfExists:true)
+        file(params.delly_exampledata_base_path + 'ref.fa', checkIfExists:true)
     ])
 
     ch_fai = Channel.of([
         [ id:'genome' ],
-        file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/chr21/sequence/genome.fasta.fai', checkIfExists:true)
+        file(params.delly_exampledata_base_path + 'ref.fa.fai', checkIfExists:true)
     ])
 
     ch_annotsv_annotations = Channel.of([

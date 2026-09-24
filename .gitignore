@@ -5,3 +5,6 @@ project_docs/
 AGENTS*
 *.sif
 *.def
+
+.nextflow.log*
+null/pipeline_info/execution*
